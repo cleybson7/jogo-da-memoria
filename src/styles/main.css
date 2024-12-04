@@ -4,6 +4,7 @@ body{
     align-items: center;
     min-height: 100vh;
     background: rgb(200, 157, 253);
+    user-select: none;
 }
 
 h2{
@@ -48,8 +49,8 @@ h2{
 
 .game{
     border: 1px solid red;
-    width: 450px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -65,4 +66,31 @@ h2{
     align-items: center;
     justify-content: center;
     background-color: #fff;
+
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: transform 0.5s ease-out;
+}
+/* Animação do card */
+.item.animate{
+    transform: rotateY(0deg);
+}
+
+.item::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #404040;
+    transition: 0.5s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.item.boxOpen{
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after,
+.boxMatch::after{
+    transform: rotateY(180deg);
 }
